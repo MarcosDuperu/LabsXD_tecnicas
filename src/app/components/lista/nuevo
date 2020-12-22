@@ -1,0 +1,21 @@
+function boolean ordenEsValida(orderId){
+    List<Order> orden1 =  [SELECT * FROM Order WHERE id = :orderId]
+    if (order[0].status != "active"){
+        return false
+    }
+
+    List<OrderItem> orden2 =   [SELECT * FROM OrderItem WHERE OrderId in : orderId]
+    List <id> allProductIds = new list <id>();
+
+    foreach (orden2 in OrderItems){
+		allProductIds.add(OrderItems.productId);
+}
+    List<Relationships> relacionPrincipal  = [SELECT * FROM Relationships WHERE RelationShip.RelationedProductId in : allProductIds]
+    
+    for (int i =0 ; i <=  relacionPrincipal.length ; i++){
+        if(relacionPrincipal[i].mainProductId == null || relacionPrincipal[i].type != "principal"){
+            return false;
+      }
+    }
+    return true;
+}
