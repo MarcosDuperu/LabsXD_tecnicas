@@ -1,0 +1,19 @@
+<div id="accordion">
+    <div class="card" *ngFor="let item of lista; index as i">
+        <div class="card-header" id="headingTwo">
+            <h5 class="mb-0">
+                <button class="btn btn-link collapsed dark" data-toggle="collapse" [attr.data-target]="'#collapseOne'+i" aria-expanded="false" aria-controls="collapseTwo">
+            {{item.Name}} {{item.LastName}}
+          </button>
+            </h5>
+        </div>
+        <div [id]="'collapseOne'+i" class="collapse" aria-labelledby="headingTwo" data-parent="#accordion">
+            <div class="card-body">
+                Nombre: {{item.Name}}<br> Apellido: {{item.LastName}}<br> Edad: {{item.Edad}}<br> Biografia: {{item.Biography}}<br>
+                <div *ngFor="let telefono of item.Telefonos; index as j">
+                    Telefono {{j+1}}: {{telefono}}
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
